@@ -1,0 +1,32 @@
+version: "3.1"
+services:
+  back:
+    build: ./Juice
+    container_name: Juice
+    restart: always
+    ports:
+      - 8081:8000
+    depends_on:
+      - mongodb
+    networks:
+      - backend
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    hostname: 0.0.0.0
+    volumes:
+      - "./database:/docker-entrypoint-initdb.d/init.sql"
+    environment:
+      - 0.0.0.0
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    restart: unless-stopped
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
