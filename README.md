@@ -14,3 +14,7 @@
 }
 
 ```
+
+## Ideas
+- Multiples pages
+- Extract tag content like href text etc etc
