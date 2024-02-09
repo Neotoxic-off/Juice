@@ -10,3 +10,4 @@ class ScrapperModel(BaseModel):
     data: dict
     range: list
     method: str
+    ptag: str

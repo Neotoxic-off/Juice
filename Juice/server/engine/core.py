@@ -11,7 +11,8 @@ class Core:
 
     def scrap(self, data: ScrapperModel):
         if (len(data.range) == 2):
-            return (self.__multi_scrap__(data))
+            if (data.range[0] != data.range[1]):
+                return (self.__multi_scrap__(data))
 
         return (self.__mono_scrap__(data))
 
@@ -33,7 +34,7 @@ class Core:
         limit = data.range[1]
 
         for i in range(page, limit):
-            self.__manage_params__(data.params, ["page", i])
+            self.__manage_params__(data.params, [data.ptag, i])
 
             r = self.invoker.invoke(
                 method=data.method,
@@ -59,8 +60,8 @@ class Core:
         result = []
 
         soup = BeautifulSoup(html, 'html.parser')
-
         elements = soup.find_all(tag, attrs=attrs)
+
         for content in elements:
             if (element != None and len(element) > 0):
                 result.append(content.get(element))

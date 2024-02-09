@@ -33,6 +33,7 @@
 }
 ```
 - Range: `[0, 3]`
+- Ptag: `page`, `p`
 
 ## Request
 - Method: `POST`
@@ -52,6 +53,7 @@
     },
     "headers": {},
     "data": {},
-    "range": [0, 3]
+    "range": [0, 3],
+    "ptag": "page"
 }
 ```

@@ -15,7 +15,7 @@ async def get_home():
         "data": "ok"
     })
 
-@router.post("/scrap/")
+@router.post("/scrap")
 async def post_scrap(item: ScrapperModel):
     return ({
         "result": scrapper.scrap(
