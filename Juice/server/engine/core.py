@@ -10,8 +10,14 @@ class Core:
         self.invoker = Invoker()
 
     def scrap(self, data: ScrapperModel):
+        if (len(data.range) == 2):
+            return (self.__multi_scrap__(data))
+
+        return (self.__mono_scrap__(data))
+
+    def __mono_scrap__(self, data: ScrapperModel):
         r = self.invoker.invoke(
-            method="GET",
+            method=data.method,
             url=data.host,
             params=data.params,
             headers=data.headers,
@@ -19,15 +25,46 @@ class Core:
             auth={}
         )
 
-        return self.__extract__(r.text, data.tag, data.attrs)
+        return (self.__extract__(r.text, data.tag, data.element, data.attrs))
 
-    def __extract__(self, html, tag, attrs):
+    def __multi_scrap__(self, data: ScrapperModel):
+        buffer = []
+        page = data.range[0]
+        limit = data.range[1]
+
+        for i in range(page, limit):
+            self.__manage_params__(data.params, ["page", i])
+
+            r = self.invoker.invoke(
+                method=data.method,
+                url=data.host,
+                params=data.params,
+                headers=data.headers,
+                data=data.data,
+                auth={}
+            )
+
+            buffer += self.__extract__(r.text, data.tag, data.element, data.attrs)
+
+        return (buffer)
+
+    def __manage_params__(self, params: list, add: list):
+        for i, element in enumerate(params):
+            if (element[0] == element[0]):
+                params[i][1] = add[1]
+
+        return (params)
+
+    def __extract__(self, html, tag, element, attrs):
         result = []
 
         soup = BeautifulSoup(html, 'html.parser')
 
         elements = soup.find_all(tag, attrs=attrs)
-        for element in elements:
-            result.append(f"{element}")
+        for content in elements:
+            if (element != None and len(element) > 0):
+                result.append(content.get(element))
+            else:
+                result.append(content.text)
 
         return (result)
