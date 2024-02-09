@@ -1,6 +1,4 @@
-<p>
-    <img src="https://github.com/Neotoxic-off/Juice/img/logo.png"/>
-</p>
+[logo](https://github.com/Neotoxic-off/Juice/blob/master/img/logo.png?raw=true)
 
 ## Options
 - Method: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`
