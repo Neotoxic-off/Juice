@@ -1,4 +1,4 @@
-[logo](https://github.com/Neotoxic-off/Juice/blob/master/img/logo.png?raw=true)
+![logo](https://github.com/Neotoxic-off/Juice/blob/master/img/logo.png?raw=true)
 
 ## Options
 - Method: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`
