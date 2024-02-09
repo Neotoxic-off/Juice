@@ -3,20 +3,20 @@ import requests
 from bs4 import BeautifulSoup
 
 from server.engine.invoker import Invoker
-from server.models.scrap import ScrapperModel
+from server.models.scrap import ScraperModel
 
 class Core:
     def __init__(self):
         self.invoker = Invoker()
 
-    def scrap(self, data: ScrapperModel):
+    def scrap(self, data: ScraperModel):
         if (len(data.range) == 2):
             if (data.range[0] != data.range[1]):
                 return (self.__multi_scrap__(data))
 
         return (self.__mono_scrap__(data))
 
-    def __mono_scrap__(self, data: ScrapperModel):
+    def __mono_scrap__(self, data: ScraperModel):
         r = self.invoker.invoke(
             method=data.method,
             url=data.host,
@@ -28,7 +28,7 @@ class Core:
 
         return (self.__extract__(r.text, data.tag, data.element, data.attrs))
 
-    def __multi_scrap__(self, data: ScrapperModel):
+    def __multi_scrap__(self, data: ScraperModel):
         buffer = []
         page = data.range[0]
         limit = data.range[1]

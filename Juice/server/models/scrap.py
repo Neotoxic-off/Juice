@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class ScrapperModel(BaseModel):
+class ScraperModel(BaseModel):
     host: str
     params: list
     tag: str
