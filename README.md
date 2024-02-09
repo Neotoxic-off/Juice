@@ -1,5 +1,5 @@
-<p>
-    <img src="https://github.com/Neotoxic-off/Juice/blob/master/img/logo.png?raw=true" height="25%" width="25%"/>
+<p align="center">
+    <img src="https://github.com/Neotoxic-off/Juice/blob/master/img/logo.png?raw=true" height="50%" width="50%"/>
 </p>
 
 ## Options
