@@ -1,5 +1,5 @@
 # Juice
-🧃 Website scrapper api
+🧃 Website scraper api
 
 ## Options
 - Method: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`
