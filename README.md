@@ -1,5 +1,6 @@
-# Juice
-🧃 Website scraper api
+<p>
+    <img src="https://github.com/Neotoxic-off/Juice/img/logo.png"/>
+</p>
 
 ## Options
 - Method: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`
